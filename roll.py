@@ -3,7 +3,10 @@ import json
 import threading
 import queue
 
-def runNow(ck):
+fff = open("session.txt", "r")
+ck = fff.read()
+
+def runNow():
     try:
         ee = 0
         i = 0
@@ -12,7 +15,7 @@ def runNow(ck):
             i = startRoll(i,temp,ck)
             temp += 1
     except:
-       runNow(ck)
+       runNow()
 
 def Roll(tempRes,tt,ck):
     url = "https://coinpot.co/api/games/service.svc/PerformRoll"
@@ -56,9 +59,8 @@ def startRoll(i,temp,ck):
 
 
 def multiThread():
-    fff = open("session.txt", "r")
-    ck = fff.read()
-    thread = threading.Thread(target=runNow(ck))
+    
+    thread = threading.Thread(target=runNow())
     thread.start()
 
 # Start run
