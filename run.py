@@ -3,13 +3,13 @@ import os
 
 def roll():
     try:
-        os.system('python roll.py')
+        os.system('python3 roll.py')
     except:
         roll()
     
 def convert():
     try:
-        os.system('python convert.py')
+        os.system('python3 convert.py')
     except:
         convert()
 
