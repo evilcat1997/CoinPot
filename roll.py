@@ -3,11 +3,7 @@ import json
 import threading
 import queue
 
-fff = open("session.txt", "r")
-ck = fff.read()
-
 def runNow(ck):
-    
     try:
         ee = 0
         i = 0
@@ -50,20 +46,6 @@ def tempConvert(token,ck):
     jsonRES = json.loads(response.text)
     r =  jsonRES["d"]["resultDetails"]
     return r
-def getToken(ck):
-   try:
-    url = "https://coinpot.co/api/transactions/service.svc/GetCoinSummary"
-    payload = "{\"request\":{\"currencyId\":7}}"
-    headers = {
-        'content-type': "application/json; charset=UTF-8",
-        'cookie': ck
-        }
-    response = requests.request("POST", url, data=payload, headers=headers)
-    jsonRES = json.loads(response.text)
-    r =  jsonRES["d"]["currencySummary"]["balance"]
-    return int(r)
-   except:
-    getToken(ck)
 
 def startRoll(i,temp,ck):
     j = Roll(i,temp,ck)
@@ -73,9 +55,11 @@ def startRoll(i,temp,ck):
 
 
 
-def multiThread(ck):
+def multiThread():
+    fff = open("session.txt", "r")
+    ck = fff.read()
     thread = threading.Thread(target=runNow(ck))
     thread.start()
 
 # Start run
-multiThread(ck)
+multiThread()
