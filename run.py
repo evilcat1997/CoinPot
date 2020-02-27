@@ -1,11 +1,17 @@
 from threading import Thread
 import os
 
-def roll(): 
-    os.system('python roll.py')
+def roll():
+    try:
+        os.system('python roll.py')
+    except:
+        roll()
     
 def convert():
-    os.system('python convert.py')
+    try:
+        os.system('python convert.py')
+    except:
+        convert()
 
 Thread(target = roll).start() 
 Thread(target = convert).start()
