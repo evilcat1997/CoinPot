@@ -94,9 +94,5 @@ def convertNow():
     except:
         convertNow()
         
-def multiThread():
-    thread = threading.Thread(target=convertNow)
-    thread.start()
-
-# Start run
-multiThread()
+# Start        
+convertNow()

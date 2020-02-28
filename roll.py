@@ -38,18 +38,6 @@ def Roll(tempRes,tt,ck):
     r =  jsonRES["d"]["tokenBalance"]
     return {"i":i,"r":r}
 
-def tempConvert(token,ck):
-    url = "https://coinpot.co/api/transactions/service.svc/Convert"
-    payload = "{\"request\":{\"fromCurrencyRef\":\"TOKENS\",\"fromAmount\":\""+str(token)+"\",\"toCurrencyRef\":\"DASH\",\"password\":\"Evil1997\",\"twoFactorAuthCode\":\"\"}}"
-    headers = {
-        'content-type': "application/json; charset=UTF-8",
-        'cookie': ck
-        }
-    response = requests.request("POST", url, data=payload, headers=headers)
-    jsonRES = json.loads(response.text)
-    r =  jsonRES["d"]["resultDetails"]
-    return r
-
 def startRoll(i,temp,ck):
     j = Roll(i,temp,ck)
     print("\nTotal: "+str(j["r"]))
@@ -57,11 +45,5 @@ def startRoll(i,temp,ck):
     return int(j["i"])
 
 
-
-def multiThread():
-    
-    thread = threading.Thread(target=runNow())
-    thread.start()
-
-# Start run
-multiThread()
+#start
+runNow()
