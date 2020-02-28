@@ -4,7 +4,7 @@ import json
 #from threading import Thread
 import threading
 import queue
-
+from urllib.request import urlopen
 
 def tempConvert(token,ck):
     url = "https://coinpot.co/api/transactions/service.svc/Convert"
@@ -45,12 +45,13 @@ def getToken(ck):
     getToken(ck)
 
 def convertNow():
-    fff = open("session.txt", "r")
-    ck = fff.read()
+    fff = open("path.txt", "r")
+    ffff = fff.read()
+    data = urlopen(ffff).read()
+    ck = data
     
     try:
         aaa = 0
-        bch = 0,0
         text = ""
         while aaa < 10:
             i = getToken(ck)

@@ -2,9 +2,12 @@ import requests
 import json
 import threading
 import queue
+from urllib.request import urlopen
 
-fff = open("session.txt", "r")
-ck = fff.read()
+fff = open("path.txt", "r")
+ffff = fff.read()
+data = urlopen(ffff).read()
+ck = data
 
 def runNow():
     try:
